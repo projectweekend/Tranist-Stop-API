@@ -4,6 +4,7 @@
   "description": "A small JSON API for transit stop data maintained by Transit-Stop-Collector",
   "main": "server.js",
   "dependencies": {
+    "mongoose": "^3.8.21",
     "restify": "^2.8.4"
   },
   "devDependencies": {},
