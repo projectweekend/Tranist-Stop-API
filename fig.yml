@@ -1,5 +1,5 @@
 db:
-    image: mongo
+    image: dockerfile/mongodb
     ports:
         - 27017
 web:
