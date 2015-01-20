@@ -1,0 +1,15 @@
+db:
+    image: mongo
+    ports:
+        - 27017
+web:
+    build: .
+    command: node ./server.js
+    volumes:
+        - .:/api
+    ports:
+        - 3000:3000
+    links:
+        - db
+    environment:
+        PORT: 3000
