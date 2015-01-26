@@ -3,15 +3,26 @@ var mongoose = require( "mongoose" );
 var Schema = mongoose.Schema;
 
 
-var TransitStopSchema = Schema ( {
+var TransitRouteSchema = Schema( {
+    system: String,
+    id: String,
+    name: String,
     type: String,
-    route: String,
-    direction: String,
+    directions: [ String ]
+} );
+
+exports.TransitRoute = mongoose.model( "transit_routes", TransitRouteSchema );
+
+
+var TransitStopSchema = Schema ( {
+    system: String,
     name: String,
     latitude: Number,
     longitude: Number,
-    system: String
+    route_id: String,
+    route_name: String,
+    route_type: String,
+    route_direction: String
 } );
 
-
-exports.TransitStop = mongoose.model( "TransitStop", TransitStopSchema );
+exports.TransitStop = mongoose.model( "transit_stops", TransitStopSchema );
