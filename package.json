@@ -9,6 +9,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/projectweekend/Transit-Stop-API/issues"
   },
-  "homepage": "https://github.com/projectweekend/Transit-Stop-API"
+  "homepage": "https://github.com/projectweekend/Transit-Stop-API",
+  "engines": {
+    "node": "0.10.x"
+  }
 }
