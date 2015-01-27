@@ -3,6 +3,9 @@
 All requests require an API key be included in the header: `API_KEY`.
 
 
+- - -
+
+
 ### Get a list of transit systems
 
 **GET:**
@@ -24,6 +27,9 @@ All requests require an API key be included in the header: `API_KEY`.
 **Query Parameters:**
 
 * `name`: Fuzzy search on `name`.
+
+
+- - -
 
 
 ### Get routes for a transit system
@@ -67,6 +73,9 @@ All requests require an API key be included in the header: `API_KEY`.
 * `name`: Fuzzy search on `name`.
 
 
+- - -
+
+
 ### Get train stops for a route
 
 **GET:**
@@ -107,6 +116,9 @@ All requests require an API key be included in the header: `API_KEY`.
 * `name`: Fuzzy search on `name`.
 
 
+- - -
+
+
 ### Get bus stops for a route
 
 **GET:**
@@ -145,6 +157,9 @@ All requests require an API key be included in the header: `API_KEY`.
 **Query Parameters:**
 
 * `name`: Fuzzy search on `name`.
+
+
+- - -
 
 
 ### Get bus stops for a direction of a route
