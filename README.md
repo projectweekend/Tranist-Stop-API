@@ -3,9 +3,6 @@
 All requests require an API key be included in the header: `API_KEY`.
 
 
-- - -
-
-
 ### Get a list of transit systems
 
 **GET:**
