@@ -27,6 +27,7 @@ server.use( function ( req, res, next ) {
 
 
 // routes
+server.get( "/", transitStops.getSystems );
 server.get( "/:transitSystem", transitStops.getRoutes );
 server.get( "/:transitSystem/train/:routeId", transitStops.getTrainStops );
 server.get( "/:transitSystem/bus/:routeId", transitStops.getBusStops );
