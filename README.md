@@ -14,8 +14,11 @@ All requests require an API key be included in the header: `API_KEY`.
 ```json
 [
     {
-        "_id": "54c70303d0fddf10c2cd85bc",
+        "_id": "54c7bf71d0fddf25c69c8d7c",
         "system": "chicago-cta",
+        "urls": {
+            "routes": "/chicago-cta"
+        },
         "name": "Chicago Transit Authority"
     }
 ]
@@ -24,6 +27,9 @@ All requests require an API key be included in the header: `API_KEY`.
 **Query Parameters:**
 
 * `name`: Fuzzy search on `name`.
+
+**Note:**
+The `urls` property contains the next logical API route that can be accessed using the information from this route. In the example above, the URL in `urls.routes` will return all transit routes available for that transit system.
 
 
 - - -
@@ -40,24 +46,34 @@ All requests require an API key be included in the header: `API_KEY`.
 ```json
 [
     {
-        "_id": "54c594b0d0fddff55b4207f6",
+        "_id": "54c7bf72d0fddf25c69c8d7d",
         "name": "Bronzeville/Union Station",
         "system": "chicago-cta",
+        "urls": {
+            "south_stops": "/chicago-cta/bus/1/south",
+            "north_stops": "/chicago-cta/bus/1/north",
+            "all_stops": "/chicago-cta/bus/1"
+        },
         "type": "bus",
         "id": "1",
         "directions": [
-            "north,",
+            "north",
             "south"
         ]
     },
     {
-        "_id": "54c594b0d0fddff55b4207f7",
+        "_id": "54c7bf72d0fddf25c69c8d7e",
         "name": "Museum of S & I",
         "system": "chicago-cta",
+        "urls": {
+            "south_stops": "/chicago-cta/bus/10/south",
+            "north_stops": "/chicago-cta/bus/10/north",
+            "all_stops": "/chicago-cta/bus/10"
+        },
         "type": "bus",
         "id": "10",
         "directions": [
-            "north,",
+            "north",
             "south"
         ]
     }
@@ -68,6 +84,10 @@ All requests require an API key be included in the header: `API_KEY`.
 
 * `type`: Filter by `type`: **bus** or **train**.
 * `name`: Fuzzy search on `name`.
+
+
+**Note:**
+The `urls` property contains the next logical API routes that can be accessed using the information from this route. In the example above, the URL in `urls.all_stops` will return all stops for the route. The URL in `urls.south_stops` will return all southbound stops. The URL in `urls.north_stops` will return all northbound stops.
 
 
 - - -
