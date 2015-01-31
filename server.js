@@ -1,6 +1,7 @@
 var restify = require( "restify" );
 var mongoose = require( "mongoose" );
 var transitStops = require( "./api/transit-stops/controllers" );
+var blitz = require( "./api/blitz/controllers" );
 
 
 mongoose.connect( process.env.MONGO_URL || process.env.DB_1_PORT.replace( "tcp", "mongodb" ) + "/test" );
@@ -28,6 +29,7 @@ server.use( function ( req, res, next ) {
 
 // routes
 server.get( "/", transitStops.getSystems );
+server.get( "/mu-1234-cafe-5678-babe", blitz.get );
 server.get( "/:transitSystem", transitStops.getRoutes );
 server.get( "/:transitSystem/train/:routeId", transitStops.getTrainStops );
 server.get( "/:transitSystem/bus/:routeId", transitStops.getBusStops );
