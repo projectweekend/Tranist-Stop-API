@@ -1,3 +1,4 @@
+var url = require( "url" );
 var restify = require( "restify" );
 var mongoose = require( "mongoose" );
 var transitStops = require( "./api/transit-stops/controllers" );
@@ -22,6 +23,7 @@ var unsecureRoutes = [ blitzURL ];
 // middleware
 server.use( restify.queryParser() );
 server.use( function ( req, res, next ) {
+    console.log( req.url );
     if ( unsecureRoutes.indexOf( req.url ) !== -1 ) {
         if ( req.header( "API_KEY" ) !== process.env.API_KEY ) {
             return res.send( 403, { message: "Invalid API key" } );
