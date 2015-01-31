@@ -11,17 +11,21 @@ if ( typeof process.env.API_KEY === "undefined" ) {
     process.exit( 1 );
 }
 
+var blitzURL = "/" + process.env.BLITZ_KEY;
 
 var server = restify.createServer( {
     name: 'Transit-Stop-API',
 } );
 
+var unsecureRoutes = [ blitzURL ];
 
 // middleware
 server.use( restify.queryParser() );
 server.use( function ( req, res, next ) {
-    if ( req.header( "API_KEY" ) !== process.env.API_KEY ) {
-        return res.send( 403, { message: "Invalid API key" } );
+    if ( unsecureRoutes.indexOf( req.url ) !== -1 ) {
+        if ( req.header( "API_KEY" ) !== process.env.API_KEY ) {
+            return res.send( 403, { message: "Invalid API key" } );
+        }
     }
     next();
 } );
@@ -29,7 +33,7 @@ server.use( function ( req, res, next ) {
 
 // routes
 server.get( "/", transitStops.getSystems );
-server.get( "/" + process.env.BLITZ_KEY, blitz.get );
+server.get( blitzURL, blitz.get );
 server.get( "/:transitSystem", transitStops.getRoutes );
 server.get( "/:transitSystem/train/:routeId", transitStops.getTrainStops );
 server.get( "/:transitSystem/bus/:routeId", transitStops.getBusStops );
