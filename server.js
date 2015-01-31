@@ -24,6 +24,7 @@ var unsecureRoutes = [ blitzURL ];
 server.use( restify.queryParser() );
 server.use( function ( req, res, next ) {
     console.log( "request URL: " + req.url );
+    console.log( "indexOf: " + unsecureRoutes.indexOf( req.url ) );
     if ( unsecureRoutes.indexOf( req.url ) !== -1 ) {
         if ( req.header( "API_KEY" ) !== process.env.API_KEY ) {
             return res.send( 403, { message: "Invalid API key" } );
