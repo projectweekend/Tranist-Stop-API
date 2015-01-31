@@ -29,7 +29,7 @@ server.use( function ( req, res, next ) {
 
 // routes
 server.get( "/", transitStops.getSystems );
-server.get( "/mu-1234-cafe-5678-babe", blitz.get );
+server.get( "/" + process.env.BLITZ_KEY, blitz.get );
 server.get( "/:transitSystem", transitStops.getRoutes );
 server.get( "/:transitSystem/train/:routeId", transitStops.getTrainStops );
 server.get( "/:transitSystem/bus/:routeId", transitStops.getBusStops );
