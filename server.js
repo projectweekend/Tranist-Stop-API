@@ -12,11 +12,11 @@ if ( typeof process.env.API_KEY === "undefined" ) {
     process.exit( 1 );
 }
 
-var blitzURL = "/" + process.env.BLITZ_KEY;
-
 var server = restify.createServer( {
     name: 'Transit-Stop-API',
 } );
+
+var blitzURL = "/" + process.env.BLITZ_KEY;
 
 var unsecureRoutes = [ blitzURL ];
 
