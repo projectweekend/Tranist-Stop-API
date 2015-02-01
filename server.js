@@ -1,8 +1,9 @@
 var url = require( "url" );
 var restify = require( "restify" );
 var mongoose = require( "mongoose" );
-var transitStops = require( "./api/transit-stops/controllers" );
-var blitz = require( "./api/blitz/controllers" );
+
+var transitStops = require( "./api/transit-stops/handlers" );
+var blitz = require( "./api/blitz/handlers" );
 
 
 mongoose.connect( process.env.MONGO_URL || process.env.DB_1_PORT.replace( "tcp", "mongodb" ) + "/test" );
