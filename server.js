@@ -2,7 +2,9 @@ var url = require( "url" );
 var restify = require( "restify" );
 var mongoose = require( "mongoose" );
 
-var transitStops = require( "./api/transit-stops/handlers" );
+var transitSystem = require( "./api/transit-system/handlers" );
+var transitRoute = require( "./api/transit-route/handlers" );
+var transitStop = require( "./api/transit-stop/handlers" );
 var blitz = require( "./api/blitz/handlers" );
 
 
@@ -34,12 +36,12 @@ server.use( function ( req, res, next ) {
 
 
 // routes
-server.get( "/", transitStops.getSystems );
+server.get( "/", transitSystem.get );
 server.get( blitzURL, blitz.get );
-server.get( "/:transitSystem", transitStops.getRoutes );
-server.get( "/:transitSystem/train/:routeId", transitStops.getTrainStops );
-server.get( "/:transitSystem/bus/:routeId", transitStops.getBusStops );
-server.get( "/:transitSystem/bus/:routeId/:routeDirection", transitStops.getBusStopsForDirection );
+server.get( "/:transitSystem", transitRoute.get );
+server.get( "/:transitSystem/train/:routeId", transitStop.getTrain );
+server.get( "/:transitSystem/bus/:routeId", transitStop.getBus );
+server.get( "/:transitSystem/bus/:routeId/:routeDirection", transitStop.getBusForDirection );
 
 
 // run

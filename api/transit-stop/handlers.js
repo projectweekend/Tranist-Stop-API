@@ -1,62 +1,7 @@
-var models = require( "./models" );
+var TransitStop = require( "./models" ).TransitStop;
 
 
-exports.getSystems = function ( req, res ) {
-
-    var filter = {};
-
-    if ( typeof req.query.name !== "undefined" ) {
-        filter.name = new RegExp( req.query.name, "i" );
-    }
-
-    var q = models.TransitSystem.find( filter ).sort( { name: 1 } );
-
-    q.exec( function ( err, results ) {
-
-        if ( err ) {
-            return res.send( 500, { message: "Database error" } );
-        }
-
-        return res.send( 200, results );
-
-    } );
-
-};
-
-
-exports.getRoutes = function ( req, res ) {
-
-    var filter = {
-        system: req.params.transitSystem.toLowerCase()
-    };
-
-    if ( typeof req.query.type !== "undefined" ) {
-        filter.type = req.query.type.toLowerCase();
-    }
-
-    if ( typeof req.query.name !== "undefined" ) {
-        filter.name = new RegExp( req.query.name, "i" );
-    }
-
-    var q = models.TransitRoute.find( filter ).sort( {
-        type: 1,
-        id: 1
-    } );
-
-    q.exec( function ( err, results ) {
-
-        if ( err ) {
-            return res.send( 500, { message: "Database error" } );
-        }
-
-        return res.send( 200, results );
-
-    } );
-
-};
-
-
-exports.getTrainStops = function ( req, res ) {
+exports.getTrain = function ( req, res ) {
 
     var filter = {
         system: req.params.transitSystem.toLowerCase(),
@@ -85,7 +30,7 @@ exports.getTrainStops = function ( req, res ) {
 };
 
 
-exports.getBusStops = function ( req, res ) {
+exports.getBus = function ( req, res ) {
 
     var filter = {
         system: req.params.transitSystem.toLowerCase(),
@@ -115,7 +60,7 @@ exports.getBusStops = function ( req, res ) {
 };
 
 
-exports.getBusStopsForDirection = function ( req, res ) {
+exports.getBusForDirection = function ( req, res ) {
 
     var filter = {
         system: req.params.transitSystem.toLowerCase(),
