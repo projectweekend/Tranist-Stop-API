@@ -15,12 +15,7 @@ exports.get = function ( req, res ) {
         filter.name = new RegExp( req.query.name, "i" );
     }
 
-    var q = TransitRoute.find( filter ).sort( {
-        type: 1,
-        id: 1
-    } );
-
-    q.exec( function ( err, results ) {
+    TransitRoute.query( filter, function ( err, results ) {
 
         if ( err ) {
             return res.send( 500, { message: "Database error" } );

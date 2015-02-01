@@ -12,7 +12,6 @@ TransitSystemSchema.index( {
     system: 1
 } );
 
-
 TransitSystemSchema.statics.searchByName = function ( name, done ) {
 
     this.find( { name: new RegExp( name, "i" ) } )
@@ -20,7 +19,6 @@ TransitSystemSchema.statics.searchByName = function ( name, done ) {
         .exec( done );
 
 };
-
 
 TransitSystemSchema.statics.all = function ( done ) {
 
