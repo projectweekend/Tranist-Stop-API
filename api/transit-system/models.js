@@ -16,7 +16,6 @@ TransitSystemSchema.index( {
 TransitSystemSchema.statics.searchByName = function ( name, done ) {
 
     this.find( { name: new RegExp( name, "i" ) } )
-        .select( "name urls" )
         .sort( { name: 1 } )
         .exec( done );
 
@@ -26,7 +25,6 @@ TransitSystemSchema.statics.searchByName = function ( name, done ) {
 TransitSystemSchema.statics.all = function ( done ) {
 
     this.find( {} )
-        .select( "name urls" )
         .sort( { name: 1 } )
         .exec( done );
 
