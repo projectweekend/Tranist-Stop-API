@@ -11,4 +11,10 @@ var TransitRouteSchema = Schema( {
     directions: [ String ]
 } );
 
+TransitRouteSchema.index( {
+    system: 1,
+    type: 1,
+    id: 1
+} );
+
 exports.TransitRoute = mongoose.model( "transit_routes", TransitRouteSchema );

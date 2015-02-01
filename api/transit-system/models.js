@@ -8,4 +8,8 @@ var TransitSystemSchema = Schema( {
     system: String
 } );
 
+TransitSystemSchema.index( {
+    system: 1
+} );
+
 exports.TransitSystem = mongoose.model( "transit_systems", TransitSystemSchema );

@@ -15,4 +15,11 @@ var TransitStopSchema = Schema ( {
     route_direction_slug: String
 } );
 
+TransitStopSchema.index( {
+    system: 1,
+    route_type: 1,
+    route_id: 1,
+    route_direction_slug: 1
+} );
+
 exports.TransitStop = mongoose.model( "transit_stops", TransitStopSchema );
