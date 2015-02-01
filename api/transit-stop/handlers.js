@@ -65,7 +65,7 @@ exports.getBusForDirection = function ( req, res ) {
     var filter = {
         system: req.params.transitSystem.toLowerCase(),
         route_id: req.params.routeId.toLowerCase(),
-        route_direction: req.params.routeDirection.toLowerCase(),
+        route_direction_slug: req.params.routeDirection.toLowerCase(),
         route_type: "bus"
     };
 
