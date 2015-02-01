@@ -15,10 +15,10 @@ exports.getTrain = function ( req, res ) {
     TransitStop.forTrain( filter, function( err, results ) {
 
         if ( err ) {
-            return this.res.send( 500, { message: "Database error" } );
+            return res.send( 500, { message: "Database error" } );
         }
 
-        return this.res.send( 200, results );
+        return res.send( 200, results );
 
     } );
 
