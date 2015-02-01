@@ -3,15 +3,7 @@ var TransitSystem = require( "./models" ).TransitSystem;
 
 exports.get = function ( req, res ) {
 
-    var filter = {};
-
-    if ( typeof req.query.name !== "undefined" ) {
-        filter.name = new RegExp( req.query.name, "i" );
-    }
-
-    var q = TransitSystem.find( filter ).sort( { name: 1 } );
-
-    q.exec( function ( err, results ) {
+    var sendResponse = function ( err, results ) {
 
         if ( err ) {
             return res.send( 500, { message: "Database error" } );
@@ -19,6 +11,14 @@ exports.get = function ( req, res ) {
 
         return res.send( 200, results );
 
-    } );
+    };
+
+    if ( typeof req.query.name !== "undefined" ) {
+
+        return TransitSystem.searchByName( req.query.name, sendResponse );
+
+    }
+
+    return TransitSystem.all( sendResponse );
 
 };
