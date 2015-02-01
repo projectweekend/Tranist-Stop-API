@@ -22,4 +22,26 @@ TransitStopSchema.index( {
     route_direction_slug: 1
 } );
 
+TransitStopSchema.statics.forTrain = function ( filter, done ) {
+
+    filter.route_type = "train";
+
+    this.find( filter )
+        .select( "name latitude longitude system" )
+        .sort( { name: 1 } )
+        .exec( done );
+
+};
+
+TransitStopSchema.statics.forBus = function ( filter, done ) {
+
+    filter.route_type = "bus";
+
+    this.find( filter )
+        .select( "name latitude longitude system" )
+        .sort( { name: 1 } )
+        .exec( done );
+
+};
+
 exports.TransitStop = mongoose.model( "transit_stops", TransitStopSchema );
