@@ -15,7 +15,7 @@ exports.get = function ( req, res ) {
         filter.name = new RegExp( req.query.name, "i" );
     }
 
-    var q = models.TransitRoute.find( filter ).sort( {
+    var q = TransitRoute.find( filter ).sort( {
         type: 1,
         id: 1
     } );

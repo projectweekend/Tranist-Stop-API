@@ -13,7 +13,7 @@ exports.getTrain = function ( req, res ) {
         filter.name = new RegExp( req.query.name, "i" );
     }
 
-    var q = models.TransitStop.find( filter ).sort( {
+    var q = TransitStop.find( filter ).sort( {
         name: 1
     } );
 
@@ -42,7 +42,7 @@ exports.getBus = function ( req, res ) {
         filter.name = new RegExp( req.query.name, "i" );
     }
 
-    var q = models.TransitStop.find( filter ).sort( {
+    var q = TransitStop.find( filter ).sort( {
         name: 1,
         route_direction: 1
     } );
@@ -73,7 +73,7 @@ exports.getBusForDirection = function ( req, res ) {
         filter.name = new RegExp( req.query.name, "i" );
     }
 
-    var q = models.TransitStop.find( filter ).sort( {
+    var q = TransitStop.find( filter ).sort( {
         name: 1
     } );
 
