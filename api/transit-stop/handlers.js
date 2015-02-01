@@ -1,18 +1,24 @@
 var TransitStop = require( "./models" ).TransitStop;
 
 
-var BaseHandler = function ( req, res ) {
+var BaseHandler = function () {
 
-    this.filter = {
-        system: req.params.transitSystem.toLowerCase(),
-        route_id: req.params.routeId.toLowerCase()
+    var _this = this;
+
+    return function ( req, res ) {
+
+        _this.filter = {
+            system: req.params.transitSystem.toLowerCase(),
+            route_id: req.params.routeId.toLowerCase()
+        };
+
+        if ( typeof req.query.name !== "undefined" ) {
+            _this.filter.name = new RegExp( req.query.name, "i" );
+        }
+
+        return _this.getData( _this.filter, _this.sendResponse( res ) );
+
     };
-
-    if ( typeof req.query.name !== "undefined" ) {
-        this.filter.name = new RegExp( req.query.name, "i" );
-    }
-
-    return this.getData( filter, this.sendResponse );
 
 };
 
@@ -20,20 +26,24 @@ BaseHandler.prototype.getData = function ( filter, done ) {
 
 };
 
-BaseHandler.prototype.sendResponse = function( err, results ) {
+BaseHandler.prototype.sendResponse = function( res ) {
 
-    if ( err ) {
-        return res.send( 500, { message: "Database error" } );
-    }
+    return function ( err, results ) {
 
-    return res.send( 200, results );
+        if ( err ) {
+            return res.send( 500, { message: "Database error" } );
+        }
+
+        return res.send( 200, results );
+
+    };
 
 };
 
 
-var TrainHandler = function ( req, res ) {
+var TrainHandler = function () {
 
-    BaseHandler.call( this, req, res );
+    BaseHandler.call( this );
 
 };
 
@@ -47,7 +57,7 @@ TrainHandler.prototype.getData = function ( filter, done ) {
 
 
 
-exports.getTrain = new TrainHandler( req, res );
+exports.getTrain = new TrainHandler();
 
 
 exports.getBus = function ( req, res ) {
