@@ -14,12 +14,20 @@ All requests require an API key be included in the header: `API_KEY`.
 ```json
 [
     {
-        "_id": "54c7bf71d0fddf25c69c8d7c",
+        "_id": "54cda510d0fddfb4ff5dc94c",
         "system": "chicago-cta",
         "urls": {
             "routes": "/chicago-cta"
         },
         "name": "Chicago Transit Authority"
+    },
+    {
+        "_id": "54cda451d0fddfb4e88241fc",
+        "system": "dc-wmata",
+        "urls": {
+            "routes": "/dc-wmata"
+        },
+        "name": "Washington Metropolitan Area Transit Authority"
     }
 ]
 ```
@@ -46,35 +54,33 @@ The `urls` property contains the next logical API route that can be accessed usi
 ```json
 [
     {
-        "_id": "54c7bf72d0fddf25c69c8d7d",
+        "_id": "54cda512d0fddfb4ff5dc94d",
         "name": "Bronzeville/Union Station",
-        "system": "chicago-cta",
         "urls": {
-            "south_stops": "/chicago-cta/bus/1/south",
-            "north_stops": "/chicago-cta/bus/1/north",
-            "all_stops": "/chicago-cta/bus/1"
+            "All Stops": "/chicago-cta/bus/1",
+            "North": "/chicago-cta/bus/1/north",
+            "South": "/chicago-cta/bus/1/south"
         },
         "type": "bus",
         "id": "1",
         "directions": [
-            "north",
-            "south"
+            "North",
+            "South"
         ]
     },
     {
-        "_id": "54c7bf72d0fddf25c69c8d7e",
+        "_id": "54cda512d0fddfb4ff5dc94e",
         "name": "Museum of S & I",
-        "system": "chicago-cta",
         "urls": {
-            "south_stops": "/chicago-cta/bus/10/south",
-            "north_stops": "/chicago-cta/bus/10/north",
-            "all_stops": "/chicago-cta/bus/10"
+            "All Stops": "/chicago-cta/bus/10",
+            "North": "/chicago-cta/bus/10/north",
+            "South": "/chicago-cta/bus/10/south"
         },
         "type": "bus",
         "id": "10",
         "directions": [
-            "north",
-            "south"
+            "North",
+            "South"
         ]
     }
 ]
@@ -87,7 +93,7 @@ The `urls` property contains the next logical API route that can be accessed usi
 
 
 **Note:**
-The `urls` property contains the next logical API routes that can be accessed using the information from this route. In the example above, the URL in `urls.all_stops` will return all stops for the route. The URL in `urls.south_stops` will return all southbound stops. The URL in `urls.north_stops` will return all northbound stops.
+The `urls` property contains the next logical API routes that can be accessed using the information from this route. In the example above, the URL in `urls["All Stops"]` will return all stops for the route. The URL in `urls["South"]` will return all southbound stops. The URL in `urls["North"]` will return all northbound stops.
 
 
 - - -
@@ -104,26 +110,20 @@ The `urls` property contains the next logical API routes that can be accessed us
 ```json
 [
     {
-        "_id": "54c59588d0fddff55b424264",
-        "route_type": "train",
-        "route_id": "g",
-        "name": "35-Bronzeville-IIT",
+        "_id": "54cda5cbd0fddfb4ff5e037e",
+        "name": "Addison-Blue",
         "route_direction": "n/a",
-        "latitude": 41.831677,
+        "latitude": 41.94738,
         "system": "chicago-cta",
-        "longitude": -87.625826,
-        "route_name": "Green Line"
+        "longitude": -87.71906
     },
     {
-        "_id": "54c59588d0fddff55b424265",
-        "route_type": "train",
-        "route_id": "g",
-        "name": "43rd",
+        "_id": "54cda5cbd0fddfb4ff5e037f",
+        "name": "Austin-Blue",
         "route_direction": "n/a",
-        "latitude": 41.816462,
+        "latitude": 41.870851,
         "system": "chicago-cta",
-        "longitude": -87.619021,
-        "route_name": "Green Line"
+        "longitude": -87.776812
     }
 ]
 ```
@@ -147,26 +147,20 @@ The `urls` property contains the next logical API routes that can be accessed us
 ```json
 [
     {
-        "_id": "54c59585d0fddff55b42364b",
-        "route_type": "bus",
-        "route_id": "8",
-        "name": "1700 N Halsted",
-        "route_direction": "north",
-        "latitude": 41.91246191,
+        "_id": "54cda5b9d0fddfb4ff5dc9d2",
+        "name": "1509 S Michigan",
+        "route_direction": "North",
+        "latitude": 41.86183776,
         "system": "chicago-cta",
-        "longitude": -87.64825579,
-        "route_name": "Halsted"
+        "longitude": -87.62388488
     },
     {
-        "_id": "54c59585d0fddff55b42364c",
-        "route_type": "bus",
-        "route_id": "8",
-        "name": "1700 N Halsted",
-        "route_direction": "south",
-        "latitude": 41.91282703,
+        "_id": "54cda5b9d0fddfb4ff5dc9d3",
+        "name": "1510 S Michigan",
+        "route_direction": "South",
+        "latitude": 41.861798,
         "system": "chicago-cta",
-        "longitude": -87.64841862,
-        "route_name": "Halsted"
+        "longitude": -87.624121
     }
 ]
 ```
@@ -190,26 +184,20 @@ The `urls` property contains the next logical API routes that can be accessed us
 ```json
 [
     {
-        "_id": "54c59585d0fddff55b42364b",
-        "route_type": "bus",
-        "route_id": "8",
-        "name": "1700 N Halsted",
-        "route_direction": "north",
-        "latitude": 41.91246191,
+        "_id": "54cda5b9d0fddfb4ff5dc9d2",
+        "name": "1509 S Michigan",
+        "route_direction": "North",
+        "latitude": 41.86183776,
         "system": "chicago-cta",
-        "longitude": -87.64825579,
-        "route_name": "Halsted"
+        "longitude": -87.62388488
     },
     {
-        "_id": "54c59585d0fddff55b42364d",
-        "route_type": "bus",
-        "route_id": "8",
-        "name": "1900 N Halsted",
-        "route_direction": "north",
-        "latitude": 41.91603291,
+        "_id": "54cda5b9d0fddfb4ff5dc9d4",
+        "name": "3000 S Michigan",
+        "route_direction": "North",
+        "latitude": 41.840602,
         "system": "chicago-cta",
-        "longitude": -87.64835278,
-        "route_name": "Halsted"
+        "longitude": -87.623115
     }
 ]
 ```
