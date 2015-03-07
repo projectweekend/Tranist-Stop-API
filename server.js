@@ -31,10 +31,10 @@ server.use( function ( req, res, next ) {
     }
     next();
 } );
-// server.use( function ( req, res, next ) {
-//     res.header( "Cache-Control", "public, max-age=" + process.env.CACHE_MAX_AGE );
-//     next();
-// } );
+server.use( function ( req, res, next ) {
+    res.header( "Cache-Control", "public, max-age=" + process.env.CACHE_MAX_AGE );
+    next();
+} );
 
 
 // routes

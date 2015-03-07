@@ -27,7 +27,7 @@ TransitStopSchema.statics.forTrain = function ( filter, done ) {
     filter.route_type = "train";
 
     this.find( filter )
-        .select( "name latitude longitude system route_direction stop_order" )
+        .select( "name latitude longitude system route_direction stop_order stop_is_underground" )
         .sort( {
             route_id: 1,
             stop_order: 1
@@ -41,7 +41,7 @@ TransitStopSchema.statics.forBus = function ( filter, done ) {
     filter.route_type = "bus";
 
     this.find( filter )
-        .select( "name latitude longitude system route_direction" )
+        .select( "name latitude longitude system route_direction stop_order stop_is_underground" )
         .sort( { name: 1 } )
         .exec( done );
 
