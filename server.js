@@ -6,6 +6,7 @@ var transitRoute = require( "./api/transit-route/handlers" );
 var transitStop = require( "./api/transit-stop/handlers" );
 var blitz = require( "./api/blitz/handlers" );
 
+var oneMonth = 60 * 60 * 24 * 30;
 
 mongoose.connect( process.env.MONGO_URL || process.env.DB_1_PORT.replace( "tcp", "mongodb" ) + "/test" );
 
@@ -30,6 +31,10 @@ server.use( function ( req, res, next ) {
             return res.send( 403, { message: "Invalid API key" } );
         }
     }
+    next();
+} );
+server.use( function ( req, res, next ) {
+    res.header( "Cache-Control", "public, max-age=" + oneMonth );
     next();
 } );
 
