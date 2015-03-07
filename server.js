@@ -6,8 +6,6 @@ var transitRoute = require( "./api/transit-route/handlers" );
 var transitStop = require( "./api/transit-stop/handlers" );
 var blitz = require( "./api/blitz/handlers" );
 
-var oneMonth = 60 * 60 * 24 * 30;
-
 mongoose.connect( process.env.MONGO_URL || process.env.DB_1_PORT.replace( "tcp", "mongodb" ) + "/test" );
 
 if ( typeof process.env.API_KEY === "undefined" ) {
@@ -34,7 +32,7 @@ server.use( function ( req, res, next ) {
     next();
 } );
 server.use( function ( req, res, next ) {
-    res.header( "Cache-Control", "public, max-age=" + oneMonth );
+    res.header( "Cache-Control", "public, max-age=" + process.env.CACHE_MAX_AGE );
     next();
 } );
 
