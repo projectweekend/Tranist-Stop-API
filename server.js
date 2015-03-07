@@ -1,4 +1,3 @@
-var url = require( "url" );
 var restify = require( "restify" );
 var mongoose = require( "mongoose" );
 
