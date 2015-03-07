@@ -16,7 +16,7 @@ if ( typeof process.env.API_KEY === "undefined" ) {
 }
 
 var server = restify.createServer( {
-    name: 'Transit-Stop-API',
+    name: "Transit-Stop-API",
 } );
 
 var blitzURL = "/" + process.env.BLITZ_KEY;
