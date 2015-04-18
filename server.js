@@ -1,3 +1,4 @@
+require( "newrelic" );
 var restify = require( "restify" );
 var mongoose = require( "mongoose" );
 
