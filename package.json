@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "mongoose": "^3.8.21",
+    "newrelic": "^1.18.3",
     "restify": "^2.8.4"
   },
   "devDependencies": {},
