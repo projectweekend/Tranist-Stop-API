@@ -1,12 +1,13 @@
 db:
-    image: dockerfile/mongodb
+    image: mongo
     ports:
         - 27017
 web:
     build: .
     command: node ./server.js
     volumes:
-        - .:/api
+        - ./api:/src/api
+        - ./server.js:/src/server.js
     ports:
         - 3000:3000
     links:
